@@ -73,6 +73,11 @@ export default function Home() {
                   github="https://github.com/users/c01-in/projects/3"
               />
               <Project
+                  name="Sub-2 ms Clouding Pipeline"
+                  description="Sub-2 ms Video Pipeline: Wi-Fi MAC-Level Bypass to Direct Display"
+                  github="https://github.com/c01-in/sub2ms-video-pipeline"
+              />
+              <Project
                   name="BotBoats"
                   description="A lightweight, offline-first AI assistant platform featuring customizable characters, local chat history, and support for your own API keys — all packed in a PWA you can run anywhere."
                   link="https://botboats.pages.dev"
