@@ -1,0 +1,71 @@
+<!doctype html><html lang="en"><head><script defer="defer" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "6bcd81abd4de40faab2629f6555666f4"}'></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"/><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script><script>// Dynamically load external script
+      function loadScript(src, async = true) {
+        const s = document.createElement("script");
+        s.src = src;
+        s.async = async;
+        document.head.appendChild(s);
+      }
+
+      // Load GA and Clarity after consent
+      function loadTrackingScripts() {
+        // prevent duplicate load
+        if (window.__trackingLoaded) return;
+        window.__trackingLoaded = true;
+
+        // Google Analytics
+        loadScript("https://www.googletagmanager.com/gtag/js?id=G-12YZTV83R0");
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-12YZTV83R0");
+
+        // Microsoft Clarity
+        (function (c, l, a, r, i, t, y) {
+          c[a] =
+            c[a] ||
+            function () {
+              (c[a].q = c[a].q || []).push(arguments);
+            };
+          t = l.createElement(r);
+          t.async = 1;
+          t.src = "https://www.clarity.ms/tag/" + i;
+          y = l.getElementsByTagName(r)[0];
+          y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "sm39vqrqyh");
+      }
+
+      window.addEventListener("load", function () {
+        window.cookieconsent.initialise({
+          palette: {
+            popup: { background: "#000" },
+            button: { background: "#00c950" },
+          },
+          content: {
+            message:
+              "This site uses cookies for analytics (Google Analytics & Microsoft Clarity)",
+            dismiss: "Accept",
+          },
+          onInitialise: function (status) {
+            if (this.hasConsented()) {
+              loadTrackingScripts();
+            }
+          },
+          onStatusChange: function (status) {
+            if (this.hasConsented()) {
+              loadTrackingScripts();
+            }
+          },
+        });
+      });</script><meta charset="UTF-8"/><link rel="icon" type="image/svg+xml" href="/icon.png"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>c01in - Engineer · Builder · Minimalist</title><meta name="description" content="Colin Lyu's personal site. Engineer, builder, minimalist. Featuring projects like AotianOS, BotBoats, and Rhymove."/><meta name="keywords" content="Colin Lyu, engineer, builder, minimalist, AotianOS, BotBoats, Rhymove, AI, PWA, tech"/><meta name="author" content="Colin Lyu"/><link rel="canonical" href="https://c01-in.github.io/"/><meta property="og:type" content="website"/><meta property="og:url" content="https://c01-in.github.io/"/><meta property="og:title" content="c01in - Engineer · Builder · Minimalist"/><meta property="og:description" content="Colin Lyu's personal site. Engineer, builder, minimalist. Featuring projects like AotianOS, BotBoats, and Rhymove."/><meta property="og:image" content="/icon.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="c01in - Engineer · Builder · Minimalist"/><meta name="twitter:description" content="Colin Lyu's personal site. Engineer, builder, minimalist. Featuring projects like AotianOS, BotBoats, and Rhymove."/><meta name="twitter:image" content="/icon.png"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Finger+Paint&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet"/><script>(function () {
+        var font = localStorage.getItem("font-family");
+        var systemFonts = "system-ui, Avenir, Helvetica, Arial, sans-serif";
+        var handwritingFonts = "Finger Paint, ZCOOL KuaiLe";
+        if (font) {
+          document.documentElement.style.fontFamily = font;
+        } else {
+          document.documentElement.style.fontFamily =
+            handwritingFonts + ", " + systemFonts;
+        }
+      })();</script><script type="module" crossorigin src="/assets/index-Bmoy1e3W.js"></script><link rel="stylesheet" crossorigin href="/assets/index-CSsdt_dk.css"></head><body><div id="root" class="w-full"></div></body></html>
