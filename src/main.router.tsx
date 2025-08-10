@@ -5,6 +5,7 @@ import "./index.css";
 import Home from "@/pages/Home";
 import KnowledgeBase from "@/pages/KnowledgeBase";
 import MarkdownReader from "@/pages/MarkdownReader";
+import KotlinPlayground from "@/pages/KotlinPlayground";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -14,6 +15,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/" element={<Home />} />
           <Route path="/kb" element={<KnowledgeBase />} />
           <Route path="/read/:filename" element={<MarkdownReader />} />
+          <Route path="/kotlin" element={<KotlinPlayground />} />
         </Routes>
       </div>
     </BrowserRouter>
