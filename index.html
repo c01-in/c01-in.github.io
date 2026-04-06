@@ -1,34 +1,36 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Cloudflare Web Analytics -->
-    <script
-      defer
-      src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon='{"token": "6bcd81abd4de40faab2629f6555666f4"}'
-    ></script>
-    <!-- End Cloudflare Web Analytics -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
     <script>
-      // Dynamically load external script
-      function loadScript(src, async = true) {
+      // Keep development fast and avoid blocking localhost on third-party scripts.
+      var isLocalhost = ["localhost", "127.0.0.1", "::1"].includes(
+        window.location.hostname
+      );
+
+      function loadScript(src, options) {
+        var opts = options || {};
         const s = document.createElement("script");
         s.src = src;
-        s.async = async;
+        s.async = opts.async !== false;
+        s.defer = !!opts.defer;
+        if (typeof opts.onLoad === "function") {
+          s.addEventListener("load", opts.onLoad);
+        }
         document.head.appendChild(s);
+        return s;
       }
 
-      // Load GA and Clarity after consent
+      function loadStylesheet(href) {
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = href;
+        document.head.appendChild(link);
+      }
+
       function loadTrackingScripts() {
-        // prevent duplicate load
         if (window.__trackingLoaded) return;
         window.__trackingLoaded = true;
 
-        // Google Analytics
         loadScript("https://www.googletagmanager.com/gtag/js?id=G-12YZTV83R0");
         window.dataLayer = window.dataLayer || [];
         function gtag() {
@@ -37,7 +39,6 @@
         gtag("js", new Date());
         gtag("config", "G-12YZTV83R0");
 
-        // Microsoft Clarity
         (function (c, l, a, r, i, t, y) {
           c[a] =
             c[a] ||
@@ -52,7 +53,8 @@
         })(window, document, "clarity", "script", "sm39vqrqyh");
       }
 
-      window.addEventListener("load", function () {
+      function initCookieConsent() {
+        if (!window.cookieconsent || !window.cookieconsent.initialise) return;
         window.cookieconsent.initialise({
           palette: {
             popup: { background: "#000" },
@@ -63,23 +65,42 @@
               "This site uses cookies for analytics (Google Analytics & Microsoft Clarity)",
             dismiss: "Accept",
           },
-          onInitialise: function (status) {
+          onInitialise: function () {
             if (this.hasConsented()) {
               loadTrackingScripts();
             }
           },
-          onStatusChange: function (status) {
+          onStatusChange: function () {
             if (this.hasConsented()) {
               loadTrackingScripts();
             }
           },
         });
-      });
+      }
+
+      if (!isLocalhost) {
+        const cfScript = loadScript(
+          "https://static.cloudflareinsights.com/beacon.min.js",
+          { defer: true }
+        );
+        cfScript.setAttribute(
+          "data-cf-beacon",
+          '{"token": "6bcd81abd4de40faab2629f6555666f4"}'
+        );
+
+        loadStylesheet(
+          "https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"
+        );
+        loadScript(
+          "https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js",
+          { onLoad: initCookieConsent }
+        );
+      }
     </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>c01in - Engineer · Builder · Minimalist</title>
+    <title>c01in - Engineer | Builder | Minimalist</title>
     <meta
       name="description"
       content="Colin Lyu's personal site. Engineer, builder, minimalist. Featuring projects like AotianOS, BotBoats, and Rhymove."
@@ -90,23 +111,21 @@
     />
     <meta name="author" content="Colin Lyu" />
     <link rel="canonical" href="https://c01-in.github.io/" />
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://c01-in.github.io/" />
     <meta
       property="og:title"
-      content="c01in - Engineer · Builder · Minimalist"
+      content="c01in - Engineer | Builder | Minimalist"
     />
     <meta
       property="og:description"
       content="Colin Lyu's personal site. Engineer, builder, minimalist. Featuring projects like AotianOS, BotBoats, and Rhymove."
     />
     <meta property="og:image" content="/icon.png" />
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta
       name="twitter:title"
-      content="c01in - Engineer · Builder · Minimalist"
+      content="c01in - Engineer | Builder | Minimalist"
     />
     <meta
       name="twitter:description"
