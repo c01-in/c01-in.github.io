@@ -8,7 +8,28 @@ writeFileSync(join(dist, ".nojekyll"), "");
 
 const exec = (cmd) =>
   execSync(cmd, { stdio: "inherit", shell: true, cwd: dist });
+const read = (cmd) =>
+  execSync(cmd, { encoding: "utf8", shell: true }).trim();
+
+const resolveIdentity = () => {
+  try {
+    return {
+      name: read("git log -1 --pretty=format:%an"),
+      email: read("git log -1 --pretty=format:%ae"),
+    };
+  } catch {
+    const actor = process.env.GITHUB_ACTOR || "deploy-bot";
+    return {
+      name: process.env.GIT_AUTHOR_NAME || actor,
+      email: process.env.GIT_AUTHOR_EMAIL || `${actor}@users.noreply.github.com`,
+    };
+  }
+};
+
 exec("git init");
+const { name, email } = resolveIdentity();
+exec(`git config user.name ${JSON.stringify(name)}`);
+exec(`git config user.email ${JSON.stringify(email)}`);
 try {
   exec("git checkout gh-pages");
 } catch {
