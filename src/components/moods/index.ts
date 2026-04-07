@@ -12,6 +12,7 @@ export const allMoodImporters: MoodImporter[] = [
     () => import("./July20"),
     () => import("./July25"),
     () => import("./Augest8"),
+    () => import("./Apr06"),
 
     // To add a new mood, just add a new line here, e.g.:
     // () => import("./July19"),

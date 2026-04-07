@@ -86,6 +86,8 @@ export const toolProjects: ProjectItem[] = [
     updatedAt: "2026-04-06",
     pinned: false,
     links: {
+      primary:
+        "https://chromewebstore.google.com/detail/any-tab-mouse-sync/cclfnohkciiakolplcccpijkofpjikeo",
       github: "https://github.com/c01-in/any-tab-mouse-sync",
     },
   },
