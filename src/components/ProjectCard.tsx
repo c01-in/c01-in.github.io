@@ -1,5 +1,4 @@
-﻿import { ArrowUpRight, Pin } from "lucide-react";
-import { DynamicIcon } from "lucide-react/dynamic";
+﻿import { ArrowUpRight, Github, Pin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -96,7 +95,7 @@ export function ProjectCard({ project }: { project: ProjectItem }) {
                   rel="noopener noreferrer"
                   aria-label="Open GitHub repository"
                 >
-                  <DynamicIcon name="github" className="h-4 w-4" />
+                  <Github className="h-4 w-4" />
                 </a>
               </Button>
             )}
@@ -106,3 +105,4 @@ export function ProjectCard({ project }: { project: ProjectItem }) {
     </Card>
   );
 }
+
