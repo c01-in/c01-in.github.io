@@ -51,5 +51,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages
+          cname: colin.quarksgames.com
           force_orphan: true
           enable_jekyll: false

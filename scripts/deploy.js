@@ -4,7 +4,9 @@ import { writeFileSync } from "fs";
 import { join } from "path";
 
 const dist = join(process.cwd(), "dist");
+const customDomain = "colin.quarksgames.com";
 writeFileSync(join(dist, ".nojekyll"), "");
+writeFileSync(join(dist, "CNAME"), `${customDomain}\n`);
 
 const exec = (cmd) =>
   execSync(cmd, { stdio: "inherit", shell: true, cwd: dist });
