@@ -15,6 +15,18 @@ export type ProjectItem = {
 
 export const featuredProjects: ProjectItem[] = [
   {
+    id: "dst-server-kit",
+    name: "DST Server Kit",
+    description:
+      "Run a modded Don't Starve server in 5 minutes with Docker + Web Admin (no Lua config)",
+    category: "Featured",
+    updatedAt: "2026-04-09",
+    pinned: true,
+    links: {
+      github: "https://github.com/c01-in/dst-server-kit",
+    },
+  },
+  {
     id: "rhymove",
     name: "Rhymove",
     description:
