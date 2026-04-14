@@ -15,6 +15,7 @@ export default function Mood() {
         <div className="text-center text-xs text-muted-foreground mt-2">
           <p>An open source tool that turns seat position into sound.</p>
           <p>A small launch, a big feeling.</p>
+          <p>April 13, 2026</p>
         </div>
       </div>
     </Card>
