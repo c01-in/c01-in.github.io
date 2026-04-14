@@ -104,6 +104,20 @@ export const toolProjects: ProjectItem[] = [
     },
   },
   {
+    id: "stage-seat",
+    name: "StageSeat",
+    description:
+      "Use seat position to reshape live-like listening on the current tab. Hear the current tab like you're sitting in different seats inside a venue.",
+    category: "Tool",
+    updatedAt: "2026-04-13",
+    pinned: false,
+    links: {
+      primary:
+        "https://chromewebstore.google.com/detail/stageseat/eeehalmeooepijdlfkkepaahmjhkigaj?authuser=0&hl=zh-CN",
+      github: "https://github.com/c01-in/stage-seat-extension/",
+    },
+  },
+  {
     id: "kotlin-playground",
     name: "Kotlin Playground",
     description: "A Kotlin playground for learning and testing Kotlin code.",
