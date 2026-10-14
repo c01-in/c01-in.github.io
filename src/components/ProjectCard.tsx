@@ -11,6 +11,7 @@ function formatDate(dateValue: string) {
   }
 
   return parsed.toLocaleDateString("en-US", {
+    timeZone: "UTC",
     year: "numeric",
     month: "short",
     day: "numeric",

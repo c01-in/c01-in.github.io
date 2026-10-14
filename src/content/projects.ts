@@ -78,6 +78,18 @@ export const featuredProjects: ProjectItem[] = [
 
 export const toolProjects: ProjectItem[] = [
   {
+    id: "clipboard-bridge",
+    name: "Clipboard Bridge",
+    description:
+      "Copy on Windows, paste on Android. Copy on Android, tap Send in the app, then paste on Windows. Text and one image at a time, without a persistent Android receiver service.",
+    category: "Tool",
+    updatedAt: "2026-10-13",
+    pinned: false,
+    links: {
+      github: "https://github.com/c01-in/clipboard-bridge",
+    },
+  },
+  {
     id: "fast-zip-unpack",
     name: "Fast Zip Unpack",
     description:
