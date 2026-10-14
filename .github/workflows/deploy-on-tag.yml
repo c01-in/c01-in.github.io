@@ -13,8 +13,8 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: windows-latest
     timeout-minutes: 15
 
     steps:
@@ -31,19 +31,29 @@ jobs:
         run: npm ci
 
       - name: Build
-        shell: bash
-        run: |
-          set -euo pipefail
-          while true; do
-            echo "[heartbeat] vite build running at $(date -u +%H:%M:%S)"
-            sleep 20
-          done &
-          HEARTBEAT_PID=$!
-          cleanup() {
-            kill "$HEARTBEAT_PID" 2>/dev/null || true
-          }
-          trap cleanup EXIT
-          npm exec vite build
+        run: npm run build
+
+      - name: Upload site
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist
+          if-no-files-found: error
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download site
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
