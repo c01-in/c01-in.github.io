@@ -1,4 +1,4 @@
-﻿import { ArrowUpRight, Github, Pin } from "lucide-react";
+import { ArrowUpRight, Github, Pin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -29,7 +29,7 @@ function LinkButton({ href }: { href: string }) {
         variant="ghost"
         size="sm"
         asChild
-        className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
+        className="opacity-100"
       >
         <Link to={href} aria-label="Open project">
           <ArrowUpRight className="h-4 w-4" />
@@ -43,7 +43,7 @@ function LinkButton({ href }: { href: string }) {
       variant="ghost"
       size="sm"
       asChild
-      className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
+      className="opacity-100"
     >
       <a href={href} target="_blank" rel="noopener noreferrer" aria-label="Open project">
         <ArrowUpRight className="h-4 w-4" />
@@ -88,7 +88,7 @@ export function ProjectCard({ project }: { project: ProjectItem }) {
                 variant="ghost"
                 size="sm"
                 asChild
-                className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
+                className="opacity-100"
               >
                 <a
                   href={project.links.github}

@@ -136,7 +136,9 @@ export const toolProjects: ProjectItem[] = [
     category: "Tool",
     updatedAt: "2026-04-06",
     pinned: false,
-    links: {},
+    links: {
+      primary: "/kotlin",
+    },
   },
 ];
 
