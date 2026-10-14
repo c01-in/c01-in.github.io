@@ -1,9 +1,9 @@
-﻿import { useState, type ComponentType, useMemo, lazy, Suspense } from "react";
+import { useState, useMemo, lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { TypeOutline, RefreshCw, BookOpenText, Code } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toggleFont } from "@/lib/utils";
-import { getRandomMoodImporter } from "@/components/moods";
+import { getRandomMoodImporter, latestMoodImporter, type MoodImporter } from "@/components/moods";
 import { ProjectCard } from "@/components/ProjectCard";
 import {
   featuredProjects,
@@ -11,12 +11,12 @@ import {
   sortProjectsByPriority,
 } from "@/content/projects";
 
-type MoodImporter = () => Promise<{ default: ComponentType<any> }>;
+
 
 export default function Home() {
   const navigate = useNavigate();
   const [moodImporter, setMoodImporter] = useState<MoodImporter>(() =>
-    getRandomMoodImporter()
+    latestMoodImporter
   );
 
   const CurrentMood = useMemo(() => lazy(moodImporter), [moodImporter]);

@@ -1,7 +1,7 @@
 import type { ComponentType } from "react";
 
 // A type for our dynamic import functions
-type MoodImporter = () => Promise<{ default: ComponentType<any> }>;
+export type MoodImporter = () => Promise<{ default: ComponentType }>;
 
 // An array of functions that will dynamically import the mood components.
 // Make sure your mood components are default exports.
@@ -21,7 +21,7 @@ export const allMoodImporters: MoodImporter[] = [
     // () => import("./July19"),
 ]
 
-let isFirstCall = true; // Track if it's the first call
+export const latestMoodImporter = allMoodImporters[allMoodImporters.length - 1];
 
 /**
  * Gets a random mood importer function from the list.
@@ -29,20 +29,10 @@ let isFirstCall = true; // Track if it's the first call
  * @returns A new mood importer function.
  */
 export const getRandomMoodImporter = (current?: MoodImporter): MoodImporter => {
-  if (isFirstCall) {
-      isFirstCall = false
-      return allMoodImporters[allMoodImporters.length - 1] // Return the last importer on the first call
-  }
-
   if (allMoodImporters.length <= 1) {
     return allMoodImporters[0];
   }
 
-  let newImporter;
-  do {
-    newImporter =
-      allMoodImporters[Math.floor(Math.random() * allMoodImporters.length)];
-  } while (newImporter === current);
-
-  return newImporter;
+  const candidates = allMoodImporters.filter((importer) => importer !== current);
+  return candidates[Math.floor(Math.random() * candidates.length)];
 };

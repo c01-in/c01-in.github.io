@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react"
 import * as THREE from "three"
-import { GLTFLoader, OrbitControls, RGBELoader } from "three/examples/jsm/Addons.js"
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js"
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
+import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js"
 import { FastForward, Play } from "lucide-react"
 import { Button } from "../ui/button"
 
