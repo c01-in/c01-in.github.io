@@ -78,6 +78,19 @@ export const featuredProjects: ProjectItem[] = [
 
 export const toolProjects: ProjectItem[] = [
   {
+    id: "roster-beacon",
+    name: "Roster Beacon",
+    description:
+      "A Windows utility for NBA 2K27 quick play. Update transfers, injuries and rotations across all 30 teams using compatible local roster data.",
+    category: "Tool",
+    updatedAt: "2026-11-03",
+    pinned: false,
+    links: {
+      primary: "https://github.com/c01-in/roster-beacon/releases",
+      github: "https://github.com/c01-in/roster-beacon",
+    },
+  },
+  {
     id: "clipboard-bridge",
     name: "Clipboard Bridge",
     description:
